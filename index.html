@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>吉隆坡 2.5天行程 · 2026年6月</title>
+<style>
+:root {
+  --primary: #0EA5E9;
+  --primary-dark: #0284C7;
+  --secondary: #38BDF8;
+  --accent: #EA580C;
+  --accent-light: #FFF7ED;
+  --bg: #F0F9FF;
+  --fg: #0C4A6E;
+  --muted: #E0F2FE;
+  --border: #BAE6FD;
+  --card-bg: #FFFFFF;
+  --red: #DC2626;
+  --red-light: #FEF2F2;
+  --gold: #D97706;
+  --gold-light: #FFFBEB;
+  --green: #059669;
+  --green-light: #ECFDF5;
+  --gray: #64748B;
+  --gray-light: #F8FAFC;
+  --radius: 14px;
+  --shadow-sm: 0 1px 3px rgba(14,165,233,0.08);
+  --shadow-md: 0 4px 16px rgba(14,165,233,0.12);
+  --shadow-lg: 0 12px 32px rgba(14,165,233,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Helvetica Neue", sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(135deg, #0C4A6E 0%, #0369A1 50%, #0EA5E9 100%);
+  color: white;
+  padding: 64px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(56,189,248,0.2) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(234,88,12,0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero-flag { font-size: 52px; margin-bottom: 16px; display: block; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+.hero .subtitle { font-size: 15px; opacity: 0.8; margin-bottom: 28px; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.chip {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  backdrop-filter: blur(4px);
+}
+.chip.warn { background: rgba(234,88,12,0.3); border-color: rgba(234,88,12,0.5); }
+
+/* ── Nav pills ── */
+.nav-bar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+  padding: 0 16px;
+  box-shadow: 0 2px 8px rgba(14,165,233,0.08);
+}
+.nav-inner {
+  max-width: 760px; margin: 0 auto;
+  display: flex; gap: 0; overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-item {
+  padding: 14px 16px;
+  font-size: 13px; font-weight: 600;
+  color: var(--gray);
+  white-space: nowrap;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 200ms, border-color 200ms;
+  text-decoration: none;
+}
+.nav-item:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+/* ── Container ── */
+.container { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.section { padding: 36px 0 8px; }
+.section-title {
+  font-size: 20px; font-weight: 800;
+  color: var(--fg);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title::after {
+  content: '';
+  flex: 1; height: 2px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 20px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 250ms ease, transform 250ms ease;
+  cursor: default;
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.card-title {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px; color: var(--fg);
+}
+
+/* ── Alert ── */
+.alert {
+  border-radius: var(--radius);
+  padding: 13px 16px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  display: flex; gap: 10px; align-items: flex-start;
+  line-height: 1.65;
+  border: 1px solid transparent;
+}
+.alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.alert-blue  { background: #EFF6FF; border-color: #BFDBFE; }
+.alert-sky   { background: #F0F9FF; border-color: var(--border); }
+.alert-gold  { background: var(--gold-light); border-color: #FDE68A; }
+.alert-red   { background: var(--red-light); border-color: #FECACA; }
+.alert-green { background: var(--green-light); border-color: #A7F3D0; }
+
+/* ── Day card ── */
+.day-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 250ms;
+}
+.day-card:hover { box-shadow: var(--shadow-md); }
+.day-header {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: white;
+  padding: 16px 20px;
+  font-size: 16px; font-weight: 800;
+  display: flex; align-items: center; gap: 10px;
+}
+.day-badge {
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 12px; font-weight: 600;
+}
+.day-body { background: white; }
+.activity {
+  padding: 14px 20px;
+  border-bottom: 1px solid #F1F5F9;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  align-items: start;
+  transition: background 200ms;
+}
+.activity:last-child { border-bottom: none; }
+.activity:hover { background: #F8FBFF; }
+.activity-time {
+  font-size: 11px; font-weight: 700; color: var(--primary);
+  padding-top: 3px; white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+.activity-name { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--fg); }
+.activity-desc { font-size: 13px; color: #475569; line-height: 1.65; }
+.activity-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+
+/* ── Tags ── */
+.tag {
+  font-size: 11px; padding: 2px 9px;
+  border-radius: 10px; font-weight: 600;
+}
+.tag-sky    { background: #E0F2FE; color: #0369A1; }
+.tag-green  { background: var(--green-light); color: #065F46; }
+.tag-gold   { background: var(--gold-light); color: #92400E; }
+.tag-red    { background: var(--red-light); color: #991B1B; }
+.tag-orange { background: #FFF7ED; color: #9A3412; }
+.tag-gray   { background: #F1F5F9; color: var(--gray); }
+
+/* ── Tables ── */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 12px; border-radius: var(--radius); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; text-align: left; padding: 10px 14px; font-weight: 700; }
+thead th:first-child { border-radius: var(--radius) 0 0 0; }
+thead th:last-child  { border-radius: 0 var(--radius) 0 0; }
+td { padding: 10px 14px; border-bottom: 1px solid #F1F5F9; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: #F8FBFF; }
+
+/* ── Badges ── */
+.badge { display: inline-block; padding: 2px 9px; border-radius: 8px; font-size: 11px; font-weight: 700; }
+.badge-rec  { background: #DBEAFE; color: #1D4ED8; }
+.badge-mass { background: #E0F2FE; color: #0369A1; }
+.badge-niche { background: #FEF3C7; color: #92400E; }
+
+/* ── Transport card ── */
+.transport-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 250ms, transform 250ms;
+}
+.transport-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.transport-header {
+  background: linear-gradient(135deg, #0C4A6E, #0369A1);
+  padding: 12px 16px;
+  font-weight: 700; font-size: 14px; color: white;
+  display: flex; align-items: center; gap: 8px;
+}
+.transport-body { padding: 14px 16px; }
+.transport-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #E2E8F0; font-size: 13px; }
+.transport-row:last-child { border-bottom: none; }
+.transport-label { color: var(--gray); flex-shrink: 0; margin-right: 12px; }
+.transport-val { font-weight: 600; text-align: right; color: var(--fg); }
+
+/* ── Specialty card ── */
+.spec-grid { display: grid; gap: 12px; }
+.spec-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 250ms, transform 250ms;
+}
+.spec-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.spec-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; gap: 8px; }
+.spec-name { font-weight: 700; font-size: 14px; color: var(--fg); }
+.spec-body { font-size: 13px; color: #475569; line-height: 1.65; }
+.spec-meta { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+
+/* ── Emergency ── */
+.emg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.emg-card {
+  background: linear-gradient(135deg, #FEF2F2, #FFF);
+  border: 2px solid #FECACA;
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.emg-num { font-size: 28px; font-weight: 900; color: var(--red); letter-spacing: -1px; }
+.emg-label { font-size: 12px; color: #6B7280; margin-top: 3px; line-height: 1.4; }
+
+/* ── Checklist ── */
+.num-list { list-style: none; counter-reset: steps; }
+.num-list li {
+  counter-increment: steps;
+  padding: 8px 0 8px 36px;
+  position: relative;
+  font-size: 13px;
+  border-bottom: 1px solid #F1F5F9;
+  line-height: 1.6;
+}
+.num-list li:last-child { border-bottom: none; }
+.num-list li::before {
+  content: counter(steps);
+  position: absolute; left: 0; top: 8px;
+  width: 22px; height: 22px;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: white;
+  border-radius: 50%; font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── Budget highlight row ── */
+.budget-total td { background: linear-gradient(135deg, #EFF6FF, #F0F9FF) !important; font-weight: 700; color: var(--fg); }
+
+/* ── Footer ── */
+.footer { text-align: center; padding: 40px 16px 56px; font-size: 12px; color: #94A3B8; }
+
+/* ── Divider ── */
+.divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 8px 0 20px; }
+
+@media (max-width: 520px) {
+  .hero h1 { font-size: 24px; }
+  .emg-grid { grid-template-columns: 1fr 1fr; }
+  .activity { grid-template-columns: 44px 1fr; gap: 8px; }
+  .section-title { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-flag">🇲🇾</span>
+    <h1>吉隆坡 Kuala Lumpur</h1>
+    <div class="subtitle">2026年6月19日 – 21日 · 情侣 2人 · 2.5天精华行程</div>
+    <div class="hero-chips">
+      <span class="chip">🍜 美食探索</span>
+      <span class="chip">🛍️ 购物</span>
+      <span class="chip">🏛️ 历史文化</span>
+      <span class="chip">📸 拍照打卡</span>
+      <span class="chip">☕ 均衡节奏</span>
+      <span class="chip warn">⚠️ 餐厅出发前需自行核实营业状态</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a class="nav-item" href="#prep">行前准备</a>
+    <a class="nav-item" href="#transport">机场交通</a>
+    <a class="nav-item" href="#hotel">酒店</a>
+    <a class="nav-item" href="#itinerary">行程</a>
+    <a class="nav-item" href="#specialties">手信特产</a>
+    <a class="nav-item" href="#budget">预算</a>
+    <a class="nav-item" href="#safety">安全应急</a>
+    <a class="nav-item" href="#checklist">出发清单</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- 行前准备 -->
+  <div class="section reveal" id="prep">
+    <div class="section-title">🗂️ 行前关键准备</div>
+
+    <div class="alert alert-green reveal">
+      <span class="alert-icon">✅</span>
+      <div><strong>签证：免签30天</strong> — 中国护照入境马来西亚免签（2023年12月起）。出发前在 <strong>imi.gov.my</strong> 确认最新政策，护照有效期须 ≥ 6个月，建议携带来回机票订单备查。</div>
+    </div>
+
+    <div class="alert alert-gold reveal">
+      <span class="alert-icon">💱</span>
+      <div><strong>货币：马来西亚林吉特 MYR</strong> — 参考汇率 1 MYR ≈ 1.5 CNY（近3个月波动约 ±5%，出发前查实时汇率）。大商场刷 Visa / Mastercard；夜市、街边小吃须备现金。换汇建议在 KLIA <strong>到达层</strong>或市区汇兑处，避开出发层（汇率较差）。</div>
+    </div>
+
+    <div class="alert alert-sky reveal">
+      <span class="alert-icon">📱</span>
+      <div><strong>SIM 卡</strong> — KLIA 到达层购本地 SIM（Celcom / Maxis / Digi），4天套餐约 MYR 15–25（≈ CNY 23–38）。或提前在 Klook / Airalo 购马来西亚 eSIM，落地即用。</div>
+    </div>
+
+    <div class="alert alert-gold reveal">
+      <span class="alert-icon">☔</span>
+      <div><strong>天气（历史均值）</strong> — 6月气温 28–33°C，湿热，午后常有短暂雷阵雨（1–2小时）。必备折叠雨伞；商场冷气极强，备薄外套；防晒 SPF50+。<br><em style="color:#92400E">历史均值可能低估极端天气——出发前 1–2 周查实时天气预报。</em></div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-title">👗 着装注意</div>
+      <ul style="font-size:13px;padding-left:18px;color:#475569;line-height:2.0;">
+        <li>进入清真寺：入口提供袍子，需遮盖头发、肩膀和膝盖；凉鞋党记得带袜子</li>
+        <li>商场购物：着装自由，无特殊要求</li>
+        <li>户外活动：轻薄速干衣物，避免牛仔裤（湿了难干）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 机场交通 -->
+  <div class="section reveal" id="transport">
+    <div class="section-title">✈️ 机场 ↔ 市区</div>
+
+    <div class="transport-card reveal">
+      <div class="transport-header">🛬 入境：KLIA → 市区</div>
+      <div class="transport-body">
+        <div class="transport-row"><span class="transport-label">推荐</span><span class="transport-val">KLIA Ekspres 快轨 — 约28分钟直达 KL Sentral</span></div>
+        <div class="transport-row"><span class="transport-label">票价</span><span class="transport-val">MYR 55/人（≈ CNY 83）</span></div>
+        <div class="transport-row"><span class="transport-label">Grab 备选</span><span class="transport-val">MYR 60–100，约45–70分钟（行李多时方便）</span></div>
+        <div class="transport-row"><span class="transport-label">大巴备选</span><span class="transport-val">MYR 12–18，约60–90分钟（预算优先）</span></div>
+        <div class="transport-row"><span class="transport-label" style="color:var(--red)">⚠️ 注意</span><span class="transport-val" style="color:var(--red)">廉价航班（AirAsia）落 KLIA2，需搭免费 Aerotrain 到主楼才可乘快轨，加约10分钟</span></div>
+      </div>
+    </div>
+
+    <div class="transport-card reveal">
+      <div class="transport-header">🛫 返程：市区 → KLIA（6月21日）</div>
+      <div class="transport-body">
+        <div class="transport-row"><span class="transport-label">时间规划</span><span class="transport-val">航班时间 − 3小时 = 出发去机场时间</span></div>
+        <div class="transport-row"><span class="transport-label">快轨时间</span><span class="transport-val">KL Sentral 出发约28分钟，预留候车10分钟</span></div>
+        <div class="transport-row"><span class="transport-label">Grab 备注</span><span class="transport-val">早高峰45–80分钟，建议多预留30分钟</span></div>
+        <div class="transport-row"><span class="transport-label">退房行李</span><span class="transport-val">标准退房12:00，可寄存行李后继续游览</span></div>
+      </div>
+    </div>
+
+    <div class="alert alert-gold reveal">
+      <span class="alert-icon">ℹ️</span>
+      <div>票价为近似值，请出发前在 <strong>kliaekspres.com</strong> 或 Klook 确认最新票价及首末班时间。</div>
+    </div>
+  </div>
+
+  <!-- 酒店 -->
+  <div class="section reveal" id="hotel">
+    <div class="section-title">🏨 酒店推荐</div>
+
+    <div class="alert alert-gold reveal">
+      <span class="alert-icon">⚠️</span>
+      <div>以下价格为历史参考数据（非2026年6月实时报价）。出发前请在 <strong>Agoda + Booking.com</strong> 两个平台交叉对比实时报价。所有酒店均提供行李寄存，标准入住15:00，退房12:00。</div>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr><th>酒店</th><th>区域</th><th>参考价/晚</th><th>评分</th><th>推荐度</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Traders Hotel KL</strong><br><span style="font-size:11px;color:#94A3B8">（Shangri-La Traders）</span></td><td>KLCC</td><td>MYR 500–850</td><td>Booking 8.5 / Agoda 8.4</td><td><span class="badge badge-rec">💑 首选</span></td></tr>
+          <tr><td><strong>Mandarin Oriental KL</strong></td><td>KLCC</td><td>MYR 800–1,400</td><td>Booking 8.9 / TA 4.5</td><td><span class="badge badge-rec">顶级体验</span></td></tr>
+          <tr><td><strong>JW Marriott KL</strong></td><td>Bukit Bintang</td><td>MYR 600–1,000</td><td>Booking 8.8 / Agoda 8.7</td><td><span class="badge badge-rec">购物核心</span></td></tr>
+          <tr><td><strong>Hotel Indigo KL</strong></td><td>Bukit Bintang</td><td>MYR 350–600</td><td>Booking 8.5</td><td><span class="badge badge-niche">精品风格</span></td></tr>
+          <tr><td><strong>The Ritz-Carlton KL</strong></td><td>Bukit Bintang</td><td>MYR 900–1,600</td><td>Booking 9.0 / TA 4.5</td><td><span class="badge badge-rec">纪念场合</span></td></tr>
+          <tr><td><strong>Aloft KL Sentral</strong></td><td>KL Sentral</td><td>MYR 280–450</td><td>Booking 8.3 / Agoda 8.2</td><td><span class="badge badge-mass">交通方便</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-green reveal">
+      <span class="alert-icon">💡</span>
+      <div>情侣首推 <strong>Traders Hotel（Shangri-La Traders）</strong>——KLCC 步行可达双子塔，泳池有双塔景，性价比最高。</div>
+    </div>
+  </div>
+
+  <!-- 行程 -->
+  <div class="section" id="itinerary">
+    <div class="section-title reveal">🗓️ 每日行程</div>
+
+    <div class="alert alert-sky reveal">
+      <span class="alert-icon">📌</span>
+      <div>行程假设：D1 6月19日下午约15:00–16:00抵达/入住；D3 6月21日上午/中午航班。时间如有变化请相应调整。</div>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="day-card reveal">
+      <div class="day-header">
+        📅 D1 · 6月19日
+        <span class="day-badge">抵达日·下午/傍晚</span>
+      </div>
+      <div class="day-body">
+        <div class="activity">
+          <div class="activity-time">15:00</div>
+          <div>
+            <div class="activity-name">入住酒店 · 寄存行李</div>
+            <div class="activity-desc">若房间未就绪可先寄存行李出发，前台均可寄存。</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">16:30</div>
+          <div>
+            <div class="activity-name">🏙️ KLCC 双子塔外景打卡</div>
+            <div class="activity-desc">世界级标志建筑，傍晚光线最佳。KLCC 公园草坪+倒影水池，双塔倒影经典机位，免费。</div>
+            <div class="activity-tags">
+              <span class="tag tag-green">免费</span>
+              <span class="tag tag-gold">📸 必拍</span>
+            </div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">17:30</div>
+          <div>
+            <div class="activity-name">🏬 Suria KLCC 商场漫逛</div>
+            <div class="activity-desc">双子塔地下商场，品牌全、冷气足。B1 Jaya Grocer 超市可购本地零食和手信预热扫货。</div>
+            <div class="activity-tags"><span class="tag tag-sky">购物</span></div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">20:00</div>
+          <div>
+            <div class="activity-name">⛲ KLCC 音乐喷泉</div>
+            <div class="activity-desc">KLCC 公园音乐喷泉约20:00开始，持续约15–20分钟，免费。出发前查当晚官方时间（Facebook: KLCC Park）。</div>
+            <div class="activity-tags"><span class="tag tag-green">免费</span></div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">20:30</div>
+          <div>
+            <div class="activity-name">🍽️ 晚餐：Suria KLCC 美食层</div>
+            <div class="activity-desc">商场4F–5F，马来菜、中式、日式均有。人均 MYR 40–80（≈ CNY 60–120）。<br><strong style="color:var(--red)">⚠️ 出发前3–5天在 Google Maps 确认目标餐厅营业状态。</strong></div>
+            <div class="activity-tags"><span class="tag tag-gold">MYR 40–80/人</span></div>
+          </div>
+        </div>
+        <div class="alert alert-blue" style="margin:12px 20px;">
+          <span class="alert-icon">🎫</span>
+          <div><strong>双子塔观景台预约提醒</strong> — 票价约 MYR 85/人，每日限额，<strong>现在就去 petronas.com.my 预约6月20日场次</strong>，临时购票几乎买不到。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card reveal">
+      <div class="day-header">
+        📅 D2 · 6月20日
+        <span class="day-badge">完整游览日</span>
+      </div>
+      <div class="day-body">
+        <div class="activity">
+          <div class="activity-time">08:30</div>
+          <div>
+            <div class="activity-name">☕ 早餐：Kopitiam 马来咖啡店</div>
+            <div class="activity-desc">咖椰烤面包（kaya toast）+ 半熟蛋 + 白咖啡，KL 标志性早餐。人均 MYR 10–20。<br>Ya Kun Kaya（Suria KLCC LG层）或酒店附近街边老字号。</div>
+            <div class="activity-tags"><span class="tag tag-green">MYR 10–20/人</span></div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">09:30</div>
+          <div>
+            <div class="activity-name">🏛️ 独立广场（Dataran Merdeka）</div>
+            <div class="activity-desc">马来西亚独立象征广场。对面苏丹阿都沙末大楼（Sultan Abdul Samad Building）英殖民摩尔式建筑，红砖铜穹，上午光线最佳。</div>
+            <div class="activity-tags">
+              <span class="tag tag-green">免费</span>
+              <span class="tag tag-gold">📸 必拍</span>
+            </div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">10:30</div>
+          <div>
+            <div class="activity-name">🕌 国家清真寺（Masjid Negara）</div>
+            <div class="activity-desc">距独立广场步行约10分钟。非祈祷时间免费开放，入口提供袍子借用。<strong>着装：需遮头发、肩膀、膝盖。</strong></div>
+            <div class="activity-tags">
+              <span class="tag tag-green">免费</span>
+              <span class="tag tag-red">着装要求</span>
+            </div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">11:30</div>
+          <div>
+            <div class="activity-name">🏮 茨厂街（Petaling Street · 唐人街）</div>
+            <div class="activity-desc">打 Grab 约5分钟（MYR 5–8）。上午人少，适合拍照，华马印三族文化融合氛围。零食手信、街边美食，非定价商店正常议价。</div>
+            <div class="activity-tags">
+              <span class="tag tag-gold">📸</span>
+              <span class="tag tag-sky">手信购买</span>
+            </div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">12:30</div>
+          <div>
+            <div class="activity-name">🍜 午餐：旧城区华人老字号</div>
+            <div class="activity-desc">肉骨茶（Bak Kut Teh）或云吞面（Wonton Mee），人均 MYR 15–35。<br><strong style="color:var(--red)">⚠️ 出发前在 Google Maps 搜索 "Bak Kut Teh Chinatown KL"，选 ≥4.2分、100+评论店家并确认营业。</strong></div>
+            <div class="activity-tags">
+              <span class="tag tag-green">MYR 15–35/人</span>
+              <span class="tag tag-red">⚠️需自行验证</span>
+            </div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">14:00</div>
+          <div>
+            <div class="activity-name">🛍️ Bukit Bintang 购物区</div>
+            <div class="activity-desc">打 Grab 约10分钟（MYR 8–15）。Pavilion KL → Lot 10 → Fahrenheit88 三商场相连，品牌齐全。Pavilion LG 层有 Bee Cheng Hiang 肉干门店。</div>
+            <div class="activity-tags"><span class="tag tag-sky">购物</span></div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">16:30</div>
+          <div>
+            <div class="activity-name">🗼 吉隆坡塔（KL Tower · Menara KL）</div>
+            <div class="activity-desc">与双子塔同框经典机位，可从此角度拍双塔全景。距 Bukit Bintang 步行15–20分钟或 Grab 5分钟。观景台约 MYR 52/人（klcctower.com.my 查最新价）。</div>
+            <div class="activity-tags">
+              <span class="tag tag-gold">MYR 52/人（约）</span>
+              <span class="tag tag-gold">📸</span>
+            </div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">19:00</div>
+          <div>
+            <div class="activity-name">🌙 Jalan Alor 夜市美食街</div>
+            <div class="activity-desc">KL 最知名户外美食街，距 Bukit Bintang 步行约5分钟。烧烤、海鲜、炒粿条、煎蚵、榴莲甜品，人均 MYR 30–60，摊贩约18:30起开档。<br><strong style="color:var(--red)">⚠️ 出发前在 Google Maps 确认街区正常营业，选 ≥4.2分摊位。</strong></div>
+            <div class="activity-tags">
+              <span class="tag tag-green">MYR 30–60/人</span>
+              <span class="tag tag-gold">💡 带折叠雨伞</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card reveal">
+      <div class="day-header">
+        📅 D3 · 6月21日
+        <span class="day-badge">轻行程·返程日</span>
+      </div>
+      <div class="day-body">
+        <div class="activity">
+          <div class="activity-time">08:00</div>
+          <div>
+            <div class="activity-name">☕ 早餐：最后一顿白咖啡</div>
+            <div class="activity-desc">OldTown White Coffee / PappaRich 或酒店附近 kopitiam，咖椰烤面包套餐。</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">09:30</div>
+          <div>
+            <div class="activity-name">🏺 Central Market（Pasar Seni · 中央市场）</div>
+            <div class="activity-desc">老建筑改建工艺品集中地，蜡染、锡器小件、白咖啡礼盒一站购齐，全部固定价，不用议价，有冷气。距茨厂街步行约3分钟。</div>
+            <div class="activity-tags"><span class="tag tag-sky">手信最后扫货</span></div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">11:30</div>
+          <div>
+            <div class="activity-name">🏨 退房 · 取行李</div>
+            <div class="activity-desc">酒店标准退房12:00，行李可寄存至前台，按航班时间取行李出发。</div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">按航班</div>
+          <div>
+            <div class="activity-name">🛫 前往 KLIA</div>
+            <div class="activity-desc">国际航班建议提前3小时到机场。KLIA Ekspres 从 KL Sentral 出发约28分钟；早高峰 Grab 可能拥堵，建议多预留30分钟。</div>
+            <div class="activity-tags"><span class="tag tag-red">国际航班提前3小时</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手信 -->
+  <div class="section" id="specialties">
+    <div class="section-title reveal">🎁 手信 · 特产购买指南</div>
+    <div class="spec-grid">
+
+      <div class="spec-card reveal">
+        <div class="spec-header">
+          <div class="spec-name">☕ 马来西亚白咖啡 Ipoh White Coffee</div>
+          <span class="badge" style="background:#FEF3C7;color:#92400E;white-space:nowrap">🏆 必买</span>
+        </div>
+        <div class="spec-body">马来西亚原产白咖啡，三合一冲泡，香醇独特。<br><strong>买哪里：</strong>Suria KLCC B1 / Pavilion B1 超市、KLIA2免税区<br><strong>品牌：</strong>OldTown、Aik Cheong、Power Root<br><strong>价格：</strong>礼盒 MYR 25–50 / 散装 MYR 8–15</div>
+        <div class="spec-meta">
+          <span class="tag tag-green">送礼</span><span class="tag tag-sky">自用</span><span class="tag tag-gray">✅手提/托运均可</span><span class="tag tag-gray">保质期12–24月</span>
+        </div>
+      </div>
+
+      <div class="spec-card reveal">
+        <div class="spec-header">
+          <div class="spec-name">🥩 马来西亚肉干 Bakkwa</div>
+          <span class="badge" style="background:#FEF3C7;color:#92400E;white-space:nowrap">🏆 必买</span>
+        </div>
+        <div class="spec-body">烤制猪/牛肉干，香甜微辣，华人节庆伴手礼定番。<br><strong>买哪里：</strong>Pavilion LG 层 Bee Cheng Hiang；茨厂街附近 Kim Hock Chuan<br><strong>价格：</strong>MYR 60–100 / 500g</div>
+        <div class="spec-meta">
+          <span class="tag tag-green">送礼首选</span>
+          <span class="tag tag-red">⚠️入境中国须申报肉制品，建议托运</span>
+          <span class="tag tag-gray">保质期约2–3周（真空）</span>
+        </div>
+      </div>
+
+      <div class="spec-card reveal">
+        <div class="spec-header">
+          <div class="spec-name">🍫 榴莲零食 Durian Snacks</div>
+          <span class="badge" style="background:#DBEAFE;color:#1D4ED8;white-space:nowrap">推荐</span>
+        </div>
+        <div class="spec-body">加工榴莲零食，无气味顾虑。<br><strong>推荐：</strong>Beryl's 榴莲巧克力礼盒（包装精美）、D24 榴莲糖<br><strong>买哪里：</strong>Suria KLCC B1 超市、Pavilion B1、KLIA2 免税区<br><strong>价格：</strong>礼盒 MYR 25–60</div>
+        <div class="spec-meta">
+          <span class="tag tag-green">送礼</span><span class="tag tag-gray">✅加工零食无限制</span><span class="tag tag-red">❌新鲜榴莲严禁带上飞机</span>
+        </div>
+      </div>
+
+      <div class="spec-card reveal">
+        <div class="spec-header">
+          <div class="spec-name">🍞 咖椰酱 Kaya</div>
+          <span class="badge" style="background:#DBEAFE;color:#1D4ED8;white-space:nowrap">推荐</span>
+        </div>
+        <div class="spec-body">马来西亚特色椰奶蛋黄酱，配烤吐司是 KL 标志早餐。<br><strong>买哪里：</strong>Ya Kun Kaya（Suria KLCC LG）、超市 Cold Storage / Jaya Grocer<br><strong>价格：</strong>超市瓶装 MYR 8–15；Ya Kun 品牌 MYR 15–25</div>
+        <div class="spec-meta">
+          <span class="tag tag-sky">自用</span>
+          <span class="tag tag-red">⚠️液体，手提须≤100ml，超过放托运</span>
+          <span class="tag tag-gray">保质期3–6月（未开封）</span>
+        </div>
+      </div>
+
+      <div class="spec-card reveal">
+        <div class="spec-header">
+          <div class="spec-name">🥂 Royal Selangor 锡器</div>
+          <span class="badge" style="background:#DBEAFE;color:#1D4ED8;white-space:nowrap">推荐</span>
+        </div>
+        <div class="spec-body">1885年创立，世界最大锡器品牌，马来西亚标志工艺品。<br><strong>买哪里：</strong>The Gardens Mall（Mid Valley）或 Bangsar Shopping Centre — ⚠️ KLCC / Pavilion 无官方直营店<br><strong>价格：</strong>小摆件 MYR 140–370；酒杯/相框 MYR 300–700</div>
+        <div class="spec-meta">
+          <span class="tag tag-gold">高端送礼</span><span class="tag tag-gray">✅纯摆件可手提，重物建议托运</span>
+        </div>
+      </div>
+
+      <div class="spec-card reveal">
+        <div class="spec-header">
+          <div class="spec-name">🎨 蜡染布料 Malaysian Batik</div>
+          <span class="badge" style="background:#DBEAFE;color:#1D4ED8;white-space:nowrap">推荐</span>
+        </div>
+        <div class="spec-body">马来西亚传统手工染色布料，丝巾/服装/桌布款式多样。<br><strong>买哪里：</strong>Central Market（Pasar Seni）最集中；Pavilion KL 内有 Batik Boutique<br><strong>价格：</strong>蜡染丝巾 MYR 30–80；上衣 MYR 60–150</div>
+        <div class="spec-meta">
+          <span class="tag tag-green">送礼</span><span class="tag tag-sky">自用</span><span class="tag tag-gray">✅纺织品无限制</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="alert alert-sky reveal" style="margin-top:8px;">
+      <span class="alert-icon">🛒</span>
+      <div><strong>购买地图：</strong> Suria KLCC B1超市 → 白咖啡/榴莲零食/咖椰 · Pavilion LG → 肉干/榴莲糖 · Central Market → 蜡染/工艺品 · KLIA2免税区 → 白咖啡礼盒/Beryl's 巧克力</div>
+    </div>
+  </div>
+
+  <!-- 预算 -->
+  <div class="section reveal" id="budget">
+    <div class="section-title">💰 预算估算</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>类目</th><th>MYR（2人）</th><th>约合人民币</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>酒店（2晚）</td><td>700–1,700</td><td>1,050–2,550元</td><td>中档至高档（Traders/JW级别）</td></tr>
+          <tr><td>餐饮</td><td>400–700</td><td>600–1,050元</td><td>含6顿正餐+早餐+小吃</td></tr>
+          <tr><td>景点门票</td><td>200–300</td><td>300–450元</td><td>双子塔观景台+KL Tower</td></tr>
+          <tr><td>市内交通（Grab+地铁）</td><td>100–200</td><td>150–300元</td><td>约10–15次 Grab</td></tr>
+          <tr><td>机场快轨（往返）</td><td>110</td><td>165元</td><td>KLIA Ekspres 2人</td></tr>
+          <tr><td>购物/手信（弹性）</td><td>300–3,000</td><td>450–4,500元</td><td>按个人购物意愿</td></tr>
+          <tr><td>应急缓冲（约10%）</td><td>170–270</td><td>255–405元</td><td>不可删减</td></tr>
+          <tr class="budget-total"><td><strong>合计（不含购物）</strong></td><td><strong>约 1,680–3,280</strong></td><td><strong>约 2,520–4,920元</strong></td><td>购物另计</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert alert-green reveal">
+      <span class="alert-icon">💰</span>
+      <div>总预算3万，机票已花6,000元，KL本身含住宿约 <strong>3,000–8,000元</strong>（取决于购物量），整体预算宽裕舒适。汇率基于 1 MYR ≈ 1.5 CNY，出发前以实时汇率为准。</div>
+    </div>
+  </div>
+
+  <!-- 安全应急 -->
+  <div class="section reveal" id="safety">
+    <div class="section-title">🛡️ 安全 · 应急</div>
+
+    <div class="emg-grid reveal">
+      <div class="emg-card">
+        <div class="emg-num">999</div>
+        <div class="emg-label">马来西亚统一紧急号码<br>警察 / 救护 / 消防</div>
+      </div>
+      <div class="emg-card">
+        <div class="emg-num">112</div>
+        <div class="emg-label">备用紧急号码<br>手机无信号时可拨</div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-title">🇨🇳 中国驻马来西亚大使馆</div>
+      <div style="font-size:13px;color:#475569;line-height:1.8;">
+        领事保护热线：<strong>+60-3-2161-8823</strong><br>
+        <strong style="color:var(--red)">⚠️ 出发前请在外交部领事服务网（cs.mfa.gov.cn）核实最新号码，本文数据源自训练数据需自行验证。</strong>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-title">⚠️ 主要注意事项</div>
+      <ul style="font-size:13px;padding-left:18px;color:#475569;line-height:2.1;">
+        <li><strong>Grab 必须 App 内叫车</strong> — 不随意上路边招手停的陌生车辆，特别在机场和旅游区</li>
+        <li><strong>茨厂街 / 人多区域</strong> — 手机和钱包贴身携带，避免将手机放在餐桌或背包外侧口袋</li>
+        <li><strong>夜市现金</strong> — 携带足够现金（MYR 200–300），大部分摊位不接受刷卡</li>
+        <li><strong>午后雷雨</strong> — 户外景点安排在上午，午后雷雨期间可安排商场室内活动</li>
+      </ul>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-title">🏥 医疗参考</div>
+      <div style="font-size:13px;color:#475569;line-height:1.8;">
+        外籍友好医院：<strong>Gleneagles Kuala Lumpur</strong>（282 Jalan Ampang，KLCC附近）或 <strong>Prince Court Medical Centre</strong>（39 Jalan Kia Peng）。<br>
+        <em>具体地址和急诊时间请出发前在 Google Maps 确认最新信息。</em>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-title">🛡️ 旅行保险</div>
+      <div style="font-size:13px;color:#475569;line-height:1.8;">
+        建议购买含医疗（≥50万）+ 行程取消 + 行李损失的旅行险。出发前将<strong>保单号 + 理赔热线</strong>截图存入手机相册。大额医疗费用产生前先致电保险公司确认理赔流程。
+      </div>
+    </div>
+  </div>
+
+  <!-- Checklist -->
+  <div class="section reveal" id="checklist">
+    <div class="section-title">✅ 出发前 3–5 天 Checklist</div>
+    <div class="card">
+      <ul class="num-list">
+        <li>在 <strong>imi.gov.my</strong> 确认中国护照入境马来西亚最新签证政策</li>
+        <li>在 <strong>petronas.com.my</strong> 预约双子塔观景台6月20日场次（限额，需提前购买）</li>
+        <li>在 Google Maps / OpenRice 验证 Jalan Alor 及目标餐厅营业状态</li>
+        <li>在 Agoda + Booking.com 交叉比价，确认酒店实时报价并完成预订</li>
+        <li>查实时天气预报（AccuWeather 吉隆坡），关注雷雨日安排</li>
+        <li>购买旅行保险，将保单号和理赔热线存入手机相册</li>
+        <li>下载 Grab App 并绑定支付方式（建议到达后在当地网络下注册）</li>
+        <li>查实时 MYR 汇率，准备适量现金（建议 MYR 500–1000/人）</li>
+        <li>在外交部领事服务网（cs.mfa.gov.cn）确认中国驻吉隆坡大使馆最新电话</li>
+        <li>确认两人护照有效期距离6月21日 ≥ 6个月</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div>吉隆坡行程规划 · 生成日期 2026-05-25</div>
+  <div style="margin-top:6px;">⚠️ 餐厅营业状态、酒店报价、票价须出发前自行核实 · 历史气候数据不代表实际天气</div>
+</div>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+      observer.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 4) * 60}ms`;
+  observer.observe(el);
+});
+
+// Nav highlight on scroll
+const sections = document.querySelectorAll('.section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navItems.forEach(n => n.style.color = '');
+      const active = document.querySelector(`.nav-item[href="#${e.target.id}"]`);
+      if (active) active.style.color = 'var(--primary)';
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>
