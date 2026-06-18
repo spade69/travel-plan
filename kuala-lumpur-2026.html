@@ -387,9 +387,15 @@ tr:nth-child(even) td { background: #F8FBFF; }
       <div class="transport-body">
         <div class="transport-row"><span class="transport-label">航班</span><span class="transport-val">深圳航空 ZH239</span></div>
         <div class="transport-row"><span class="transport-label">起飞</span><span class="transport-val">08:15　深圳宝安 T3</span></div>
-        <div class="transport-row"><span class="transport-label">抵达</span><span class="transport-val">12:20　新加坡樟宜 T1</span></div>
+        <div class="transport-row"><span class="transport-label">原定抵达</span><span class="transport-val" style="text-decoration:line-through;color:var(--gray)">12:20　新加坡樟宜 T1</span></div>
+        <div class="transport-row"><span class="transport-label" style="color:var(--red)">⚠️ 实际预计</span><span class="transport-val" style="color:var(--red)"><strong>16:00 落地</strong>（航班延误约3.5h）</span></div>
         <div class="transport-row"><span class="transport-label">时间均为当地时间</span><span class="transport-val">深圳与新加坡无时差</span></div>
       </div>
+    </div>
+
+    <div class="alert alert-red reveal">
+      <span class="alert-icon">⏰</span>
+      <div><strong>航班延误 — D1 行程已重排</strong>：深圳出港延误，预计 <strong>6/18 下午约 16:00</strong> 才落地新加坡（原定 12:20）。<strong>海滨花园室内双馆已移至 D2 上午</strong>；D1 下午/晚上改为落地直接入住 → 珍宝晚餐 → 滨海湾夜景+灯光秀 → 芽笼宵夜。落地后请重新核对实际到达时间再微调。</div>
     </div>
 
     <div class="transport-card reveal">
@@ -578,14 +584,14 @@ tr:nth-child(even) td { background: #F8FBFF; }
 
     <div class="alert alert-sky reveal">
       <span class="alert-icon">📌</span>
-      <div>行程依据真实航班：D1 6/18 中午12:20抵新加坡；D2 6/19 下午17:00 飞 KL、晚18:15落地；D4 6/21 晚19:45 返深圳。时间如有变化请相应调整。</div>
+      <div>行程依据真实航班：<strong style="color:var(--red)">D1 6/18 因延误约16:00才抵新加坡（已重排，海滨花园双馆移至D2上午）</strong>；D2 6/19 下午17:00 飞 KL、晚18:15落地；D4 6/21 晚19:45 返深圳。时间如有变化请相应调整。</div>
     </div>
 
     <!-- Day 1 — 新加坡 -->
     <div class="day-card reveal">
       <div class="day-header">
         🇸🇬 D1 · 6月18日（周四）
-        <span class="day-badge">深圳✈新加坡·下午+晚上</span>
+        <span class="day-badge">深圳✈新加坡·延误·傍晚到</span>
       </div>
       <div class="day-body">
         <div class="alert alert-sky" style="margin:12px 20px;">
@@ -593,34 +599,26 @@ tr:nth-child(even) td { background: #F8FBFF; }
           <div><strong>新加坡很小，不用担心距离</strong>——各点 Grab 都在 10–20 分钟：乌节↔滨海湾约12–15分；滨海湾各景点（海滨花园/金沙/鱼尾狮）<strong>步行连成一片</strong>；滨海湾↔芽笼约12–15分；芽笼↔乌节酒店约15–20分。地铁 MRT 也方便，晚归直接 Grab 回。</div>
         </div>
         <div class="activity">
-          <div class="activity-time">12:20</div>
+          <div class="activity-time">16:00</div>
           <div>
-            <div class="activity-name">🛬 抵达樟宜机场 T1 · 逛 Jewel 星耀樟宜</div>
-            <div class="activity-desc">入境（备好 SG Arrival Card）。T1 旁 <strong>Jewel 星耀樟宜</strong>室内瀑布+森林谷免费必拍，先逛20–30分钟再进市区。</div>
-            <div class="activity-tags"><span class="tag tag-green">免费</span><span class="tag tag-gold">📸 必拍</span></div>
+            <div class="activity-name">🛬 抵达樟宜机场 T1（延误落地）· 入境取行李</div>
+            <div class="activity-desc">航班延误，约16:00落地。入境（备好 SG Arrival Card）、取行李，预计17:00前出关。</div>
+            <div class="activity-tags"><span class="tag tag-red">⏰ 延误·原12:20</span></div>
           </div>
         </div>
         <div class="activity">
-          <div class="activity-time">13:30</div>
+          <div class="activity-time">17:00</div>
           <div>
-            <div class="activity-name">🏨 入住全季乌节 Ji Hotel Orchard / 寄存行李</div>
-            <div class="activity-desc">MRT（樟宜→市区，绿线转线到 Somerset/Orchard）或 Grab 到乌节路酒店。房间未就绪可先寄存行李出发。</div>
+            <div class="activity-name">💧 顺逛 Jewel 星耀樟宜（可选20分钟）</div>
+            <div class="activity-desc">T1 旁 <strong>Jewel 星耀樟宜</strong>室内瀑布+森林谷免费必拍。赶时间可只在去市区路上快速打卡，或留到 D2 去机场时再逛。</div>
+            <div class="activity-tags"><span class="tag tag-green">免费</span><span class="tag tag-gold">📸 可选</span></div>
           </div>
         </div>
         <div class="activity">
-          <div class="activity-time">14:30</div>
+          <div class="activity-time">17:45</div>
           <div>
-            <div class="activity-name">🌳 海滨花园 Gardens by the Bay</div>
-            <div class="activity-desc">花穹 Flower Dome + 云雾林 Cloud Forest 室内双馆（联票约 SGD 53/人，klook 更划算），冷气足、避午后暴晒；户外擎天树丛免费拍照。从乌节酒店 Grab/MRT 约 12–15 分钟。</div>
-            <div class="activity-tags"><span class="tag tag-gold">📸 必拍</span><span class="tag tag-sky">SGD 0–53/人</span></div>
-          </div>
-        </div>
-        <div class="activity">
-          <div class="activity-time">17:30</div>
-          <div>
-            <div class="activity-name">🏙️ 滨海湾金沙 + 鱼尾狮公园 Merlion</div>
-            <div class="activity-desc">金沙倒影、鱼尾狮喷水经典机位，沿滨海湾步道散步，黄昏天际线绝佳。免费。</div>
-            <div class="activity-tags"><span class="tag tag-green">免费</span><span class="tag tag-gold">📸 必拍</span></div>
+            <div class="activity-name">🏨 入住全季乌节 Ji Hotel Orchard / 放行李</div>
+            <div class="activity-desc">MRT（樟宜→市区，绿线转线到 Somerset/Orchard）或 Grab（行李多、赶时间更省事）到乌节路酒店，放下行李轻装出门吃饭。</div>
           </div>
         </div>
         <div class="activity">
@@ -634,13 +632,13 @@ tr:nth-child(even) td { background: #F8FBFF; }
         <div class="activity">
           <div class="activity-time">20:00</div>
           <div>
-            <div class="activity-name">✨ 灯光秀（可选·二选一，免费15分钟）</div>
-            <div class="activity-desc"><strong>金沙水秀 Spectra</strong>＝金沙楼前广场灯光+水幕喷泉秀（20:00/21:00）；<strong>擎天树灯光秀 Garden Rhapsody</strong>＝海滨花园擎天树丛灯光音乐秀（19:45/20:45）。都免费·各15分钟·看一个就够；<strong>赶去芽笼可直接跳过</strong>。</div>
-            <div class="activity-tags"><span class="tag tag-green">免费·可跳过</span></div>
+            <div class="activity-name">🏙️ 滨海湾夜景（金沙+鱼尾狮）+ 灯光秀</div>
+            <div class="activity-desc">饭后 Grab 约12–15分到滨海湾。沿步道看 <strong>金沙倒影 + 鱼尾狮喷水夜景</strong>（经典机位，免费），顺看一场灯光秀：<strong>金沙水秀 Spectra</strong>（金沙楼前广场灯光水幕，20:00/21:00）或 <strong>擎天树灯光秀 Garden Rhapsody</strong>（海滨花园擎天树丛，19:45/20:45），都免费·各15分钟·看一个就够。<strong>赶去芽笼可只拍夜景跳过灯光秀</strong>。<br><em style="color:#92400E">💡 鱼尾狮白天的正式打卡放在 D2 上午市政区步行线。</em></div>
+            <div class="activity-tags"><span class="tag tag-green">免费</span><span class="tag tag-gold">📸 必拍</span></div>
           </div>
         </div>
         <div class="activity">
-          <div class="activity-time">20:45</div>
+          <div class="activity-time">21:30</div>
           <div>
             <div class="activity-name">🌟 芽笼 Geylang：榴莲 + 市井宵夜</div>
             <div class="activity-desc">Grab 约10–15分到芽笼。新加坡<strong>榴莲一条街</strong>（猫山王/黑刺现开现吃）+ 本地宵夜：Lorong 9 田鸡粥、牛肉粿条、海鲜煮炒，开到很晚。<br><strong style="color:var(--gold)">⚠️ 芽笼也是红灯区，市井热闹——东西好吃但财物贴身、晚归打 Grab 回酒店。</strong></div>
@@ -654,30 +652,50 @@ tr:nth-child(even) td { background: #F8FBFF; }
     <div class="day-card reveal">
       <div class="day-header">
         🇸🇬✈🇲🇾 D2 · 6月19日（周五）
-        <span class="day-badge">新加坡上午·飞KL·晚到</span>
+        <span class="day-badge">早起·市政区+双馆·飞KL</span>
       </div>
       <div class="day-body">
+        <div class="alert alert-gold" style="margin:12px 20px;">
+          <span class="alert-icon">⏰</span>
+          <div><strong>今天早起（6:30–7:00 起床）</strong>——上午要在 14:00 退房去机场前刷完「市政区 + 海滨花园双馆」两处，早出门才不赶。市政区各景点紧邻、步行连成一片；美术馆内部10:00才开，正好8点先拍外观晨光、9点双馆开门进场。</div>
+        </div>
         <div class="activity">
-          <div class="activity-time">08:30</div>
+          <div class="activity-time">07:15</div>
           <div>
             <div class="activity-name">☕ 早餐：亚坤 Ya Kun Kaya Toast</div>
-            <div class="activity-desc">咖椰吐司 + 半熟蛋 + 南洋咖啡，新加坡国民早餐。人均 SGD 6–10。</div>
+            <div class="activity-desc">咖椰吐司 + 半熟蛋 + 南洋咖啡，新加坡国民早餐。人均 SGD 6–10。吃完 Grab/MRT 去市政区（约10–15分）。</div>
             <div class="activity-tags"><span class="tag tag-green">SGD 6–10/人</span></div>
           </div>
         </div>
         <div class="activity">
-          <div class="activity-time">09:30</div>
+          <div class="activity-time">08:00</div>
           <div>
-            <div class="activity-name">🏮 牛车水 Chinatown / 哈芝巷 Haji Lane</div>
-            <div class="activity-desc">牛车水佛牙寺+马里安曼兴都庙（文化+手信），或哈芝巷彩色店屋（网红拍照）。二选一，看你偏文化还是拍照。</div>
-            <div class="activity-tags"><span class="tag tag-gold">📸</span><span class="tag tag-sky">手信</span></div>
+            <div class="activity-name">🏛️ 市政区 Civic District 步行线（外观+晨拍）</div>
+            <div class="activity-desc"><strong>新加坡国家美术馆 National Gallery</strong>＝由<strong>旧市政厅 City Hall + 旧最高法院 Supreme Court</strong> 两栋殖民地标建筑改造而成，新古典立面晨光最佳（内部10:00才开，今天只拍外观，赶飞机不进场）；步行约5分到 <strong>维多利亚剧院与音乐厅 Victoria Theatre & Concert Hall</strong>（红砖钟楼+莱佛士像）。一路步行、不用打车。</div>
+            <div class="activity-tags"><span class="tag tag-green">外观免费</span><span class="tag tag-gold">📸 必拍</span></div>
           </div>
         </div>
         <div class="activity">
-          <div class="activity-time">11:30</div>
+          <div class="activity-time">08:40</div>
+          <div>
+            <div class="activity-name">🦁 鱼尾狮公园 Merlion Park（白天正式打卡）</div>
+            <div class="activity-desc">从维多利亚剧院沿新加坡河步行约5–8分到河口鱼尾狮。白天看鱼尾狮喷水 + 对岸金沙天际线，与昨晚的夜景互补。免费。</div>
+            <div class="activity-tags"><span class="tag tag-green">免费</span><span class="tag tag-gold">📸 必拍</span></div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">09:15</div>
+          <div>
+            <div class="activity-name">🌳 海滨花园 Gardens by the Bay 双馆</div>
+            <div class="activity-desc">从鱼尾狮 Grab 约8–10分到海滨花园。<strong>花穹 Flower Dome + 云雾林 Cloud Forest</strong> 室内双馆（联票约 SGD 53/人，Klook 更划算·9:00开门），冷气足、室内拍照绝佳；时间紧可主攻云雾林（瀑布+空中栈道更出片）。户外擎天树丛免费拍照。<strong>约11:00前逛完</strong>。</div>
+            <div class="activity-tags"><span class="tag tag-gold">📸 必拍</span><span class="tag tag-sky">SGD 0–53/人</span></div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">11:15</div>
           <div>
             <div class="activity-name">🍗 午餐：海南鸡饭 / 麦士威熟食中心</div>
-            <div class="activity-desc">天天海南鸡饭（麦士威 Maxwell Food Centre）或文东记，新加坡必吃。人均 SGD 6–15。<br><strong style="color:var(--red)">⚠️ 出发前 Google Maps 确认营业。</strong></div>
+            <div class="activity-desc">海滨花园 Grab 回市区，天天海南鸡饭（麦士威 Maxwell Food Centre）或文东记，新加坡必吃。人均 SGD 6–15。吃完即回酒店退房。<br><strong style="color:var(--red)">⚠️ 出发前 Google Maps 确认营业。</strong></div>
             <div class="activity-tags"><span class="tag tag-green">SGD 6–15/人</span></div>
           </div>
         </div>
@@ -707,15 +725,23 @@ tr:nth-child(even) td { background: #F8FBFF; }
           <div class="activity-time">19:00</div>
           <div>
             <div class="activity-name">🚆 KLIA Ekspres → KL Sentral → Imperial Lexis</div>
-            <div class="activity-desc">快轨约33分钟到 KL Sentral（MYR 55/人），再 Grab 约12–15分钟到 Imperial Lexis（15 Jalan Kia Peng），预计20:00–20:30入住。</div>
+            <div class="activity-desc">快轨约33分钟到 KL Sentral（MYR 55/人），再 Grab 约12–15分钟到 Imperial Lexis（15 Jalan Kia Peng），预计20:00–20:30入住、放行李。</div>
           </div>
         </div>
         <div class="activity">
           <div class="activity-time">20:30</div>
           <div>
-            <div class="activity-name">🍜 简单晚餐 + （可选）双子塔夜景</div>
-            <div class="activity-desc">入住后就近吃宵夜（Pavilion 一带步行5–8分）。体力允许可步行约10–12分去 KLCC 看双子塔点灯夜景（免费），不勉强，早点休息为明天蓄力。</div>
-            <div class="activity-tags"><span class="tag tag-green">免费夜景</span></div>
+            <div class="activity-name">🍜 晚餐：酒店周边（Pavilion / Bukit Bintang 一带）</div>
+            <div class="activity-desc">入住后就近解决晚餐，步行5–8分可达：<strong>Pavilion 食阁/餐厅</strong>（营业到约22:00）、或 <strong>Lot 10 Hutong 胡同美食阁</strong>（KL 老字号小吃集合，人均 MYR 20–40）。当天 6:30 就起床又赶了飞机，吃顿热乎的早点回。<br><em style="color:#92400E">💡 Jalan Alor 夜市、KLCC 音乐喷泉留到 D3 完整玩，今晚不重复。</em></div>
+            <div class="activity-tags"><span class="tag tag-green">MYR 20–40/人</span></div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="activity-time">21:30</div>
+          <div>
+            <div class="activity-name">🌃 （可选）双子塔点灯夜景 · 散步消食</div>
+            <div class="activity-desc">体力允许，从酒店步行约10–12分到 <strong>KLCC 双子塔</strong>下，看点灯夜景、拍张到此一游（免费，不看喷泉秀——留 D3）。或直接回酒店：<strong>顶楼无边泳池若还开（一般20:00–21:00关，到店先问前台）可上去拍双塔，否则用房内私池泡一下</strong>，早休息为明天蓄力。</div>
+            <div class="activity-tags"><span class="tag tag-green">免费夜景·可选</span><span class="tag tag-sky">🏊 泳池</span></div>
           </div>
         </div>
         <div class="alert alert-blue" style="margin:12px 20px;">
